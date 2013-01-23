@@ -31,11 +31,9 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(params[:employee])
 
-    if @employee.save
-      redirect_to @employee, :notice => 'Сотрудник добавлен.'
-    else
+    @employee.save ?
+      redirect_to @employee, :notice => 'Сотрудник добавлен.' :
       render :action => 'new'
-    end
   end
 
   # PUT /employees/1
@@ -43,11 +41,9 @@ class EmployeesController < ApplicationController
   def update
     @employee = Employee.find(params[:id])
 
-    if @employee.update_attributes(params[:employee])
-      redirect_to @employee, :notice => 'Изменения сохранены.'
-    else
+    @employee.update_attributes(params[:employee]) ?
+      redirect_to @employee, :notice => 'Изменения сохранены.' :
       render :action => 'edit'
-    end
   end
 
   # DELETE /employees/1
