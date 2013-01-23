@@ -8,16 +8,16 @@ class ReportsController < ApplicationController
   end
 
   def treemap
-    data = ["['Зарплатный фонд университета', null, 0]"]
+    data = [ %q(['Зарплатный фонд университета', null, 0]) ]
 
     Department.all.each do |department|
-      data.push "['#{department.name}', 'Зарплатный фонд университета', 0]"
+      data.push %Q(['#{department.name}', 'Зарплатный фонд университета', 0])
     end
 
     Employee.all.each do |employee|
-      data.push "['#{employee.name}, #{employee.position}', " +
-                 "'#{employee.department.name}', " +
-                 "#{employee.salary}]"
+      data.push %Q(['#{employee.name}, #{employee.position}',
+                    '#{employee.department.name}',
+                     #{employee.salary}])
     end
     @data = data.join ','
   end

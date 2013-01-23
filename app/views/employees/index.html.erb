@@ -1,9 +1,11 @@
-<h1>Listing employees</h1>
+<h1>Сотрудники</h1>
+
+<p class="lead">
+  <%= link_to 'Добавить сотрудника', new_employee_path %>
+</p>
 
 <table class="table table-striped">
   <%= render @employees %>
 </table>
 
 <br />
-
-<%= link_to 'New Employee', new_employee_path %>

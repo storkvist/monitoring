@@ -6,7 +6,6 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'thin'
 
 gem 'devise'
 gem 'cancan'
@@ -31,6 +30,11 @@ end
 gem 'jquery-rails'
 
 group :development do
+  gem 'thin'
+
+  gem 'binding_of_caller'
+  gem 'better_errors'
+
   gem 'capistrano'
   gem 'rvm-capistrano'
 end

@@ -25,7 +25,7 @@
         document.getElementById('chart_staff')
     );
     chart.draw(data1, {
-      'title': 'Самое большое количество сотрудников (топ 5)',
+      'title': 'Самое большое количество сотрудников (топ-5)',
       'vAxis': {
         'title': 'Количество сотрудников'
       },
@@ -62,7 +62,7 @@
         document.getElementById('chart_department_salary')
     );
     chart.draw(data2, {
-      'title': 'Самый большой зарплатный фонд подразделения (топ 5)',
+      'title': 'Самый большой зарплатный фонд подразделения (топ-5)',
       'vAxis': {
         'title': 'Зарплатный фонд подразделения'
       },
@@ -77,6 +77,7 @@
 <div id="chart_department_salary" style="width: 660px; height: 500px;"></div>
 
 <script type="text/javascript">
+  /*
   google.setOnLoadCallback(drawChart);
   function drawChart() {
     var data3 = google.visualization.arrayToDataTable([
@@ -94,7 +95,7 @@
         document.getElementById('chart_employee_salary')
     );
     chart.draw(data3, {
-      'title': 'Самая большая зарплата сотрудника (топ 5)',
+      'title': 'Самая большая зарплата сотрудника (топ-5)',
       'vAxis': {
         'title': 'Зарплата сотрудника'
       },
@@ -105,5 +106,6 @@
       }
     });
   }
+  */
 </script>
 <div id="chart_employee_salary" style="width: 660px; height: 500px;"></div>

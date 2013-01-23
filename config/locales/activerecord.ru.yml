@@ -11,6 +11,7 @@ ru:
         description: Комментарии
       employee:
         department: Подразделение
+        department_id: Подразделение
         name: Фамилия, имя, отчество
         position: Должность
         salary: Зарплата
