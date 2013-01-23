@@ -11,7 +11,9 @@ set :application, 'monitoring.mgup.local'
 set :scm, :git
 set :repository,  'git@github.com:storkvist/monitoring.git'
 
-server 'monitoring.mgup.local', :web, :app, :db, :primary => true
+# server 'monitoring.mgup.local', :web, :app, :db, :primary => true
+server '213.171.61.189', :web, :app, :db, :primary => true
+ssh_options[:port] = 5190
 set :deploy_to, '/var/monitoring'
 
 set :user, 'root'
