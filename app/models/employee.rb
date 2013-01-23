@@ -10,6 +10,8 @@ class Employee < ActiveRecord::Base
   default_scope order('name ASC')
 
   def self.search(query)
-    Employee.where("to_tsvector('ru', name) @@ '#{query}'")
+    Employee.where(
+      "to_tsvector('ru', name) @@ plainto_tsquery('ru', '#{query}')"
+    )
   end
 end
