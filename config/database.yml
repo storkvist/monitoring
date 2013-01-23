@@ -51,5 +51,5 @@ production:
   encoding: unicode
   database: monitoring_production
   pool: 5
-  username: Monitoring
-  password:
+  username: <%= ENV['MONITORING_DATABASE_USER'] %>
+  password: <%= ENV['MONITORING_DATABASE_PASSWORD'] %>
