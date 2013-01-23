@@ -1,0 +1,23 @@
+<%= form_for(@department) do |f| %>
+  <% if @department.errors.any? %>
+    <div class="alert alert-block alert-danger">
+      <p><strong>Ошибка при сохранении</strong></p>
+
+      <ul>
+      <% @department.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, :class => 'span8' %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, :class => 'span8', :rows => 10 %>
+
+  <div class="form-actions">
+    <%= f.submit 'Сохранить', :class => 'btn btn-primary' %>
+  </div>
+<% end %>

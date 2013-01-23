@@ -1,0 +1,38 @@
+<h2>Подразделения</h2>
+
+<p class="lead">
+  <%= link_to 'Добавить подразделение', new_department_path %>
+</p>
+
+<table class="table table-striped">
+  <tbody>
+    <% @departments.each do |department| %>
+      <tr>
+        <td class="full-width">
+          <%= link_to department do %>
+            <%= department.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to department, :class => 'btn', :title => 'Посмотреть' do %>
+            <i class="icon-zoom-in"></i>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to edit_department_path(department), :class => 'btn',
+                      :title => 'Редактировать' do %>
+            <i class="icon-edit"></i>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to department, :method => :delete,
+                      :data => { :confirm => 'Вы уверены?' },
+                      :class => 'btn btn-danger',
+                      :title => 'Удалить' do %>
+            <i class="icon-remove icon-white"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

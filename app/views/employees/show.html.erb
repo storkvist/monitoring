@@ -1,0 +1,49 @@
+<p class="pull-right">
+  <span title="Создано">
+    <%= l @employee.created_at, :format => :long %>
+  </span>
+  <br>
+  <strong title="Последнее изменение">
+    <%= l @employee.updated_at, :format => :long %>
+  </strong>
+</p>
+
+<h2><%= @employee.name %></h2>
+
+<p class="lead">
+  <%= link_to 'Редактировать сотрудника', edit_employee_path(@employee) %>
+</p>
+
+<p><%= @employee.position %></p>
+
+<% unless @employee.phone.blank? %>
+  <p><%= @employee.phone %></p>
+<% end %>
+
+<% unless @employee.salary.nil? %>
+<form class="form-inline">
+  Зарплата
+  <select class="recalc-period span2" data-value="<%= @employee.salary %>">
+    <option value="1">за месяц</option>
+    <option value="12">за год</option>
+  </select>
+  &mdash;
+  <span class="recalc-result"><%= @employee.salary %></span>&nbsp;руб.
+</form>
+<% end %>
+
+<blockquote><%= @employee.duty %></blockquote>
+
+<% unless @employee.assignments.empty? %>
+<h4>Выполненные задачи</h4>
+<% end %>
+
+<dl id="assignments" class="dl-horizontal">
+  <%= render @employee.assignments %>
+</dl>
+
+<%= render 'assignments/form' %>
+
+<%= link_to '← К подразделению сотрудника', @employee.department %>
+<br>
+<%= link_to '← Ко всем сотрудникам', employees_path %>

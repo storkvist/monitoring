@@ -1,0 +1,109 @@
+<h2>Хит-парад</h2>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data1 = google.visualization.arrayToDataTable([
+      ['Подразделение', 'Количество сотрудников'],
+      <%=
+         departments = {}
+         Department.all.each do |department|
+          departments[department.name] = department.employees.count
+         end
+
+         res = ''
+         departments.sort.reverse.first(5).each do |department, staff_count|
+          res += "['#{department}', #{staff_count}],"
+         end
+         res.html_safe
+      %>
+    ]);
+
+    var chart = new google.visualization.ColumnChart(
+        document.getElementById('chart_staff')
+    );
+    chart.draw(data1, {
+      'title': 'Самое большое количество сотрудников (топ 5)',
+      'vAxis': {
+        'title': 'Количество сотрудников'
+      },
+      'series': {
+        '0': {
+          'visibleInLegend': false
+        }
+      }
+    });
+  }
+</script>
+<div id="chart_staff" style="width: 660px; height: 500px;"></div>
+
+<script type="text/javascript">
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data2 = google.visualization.arrayToDataTable([
+      ['Подразделение', 'Зарплатный фонд'],
+      <%=
+         departments = {}
+         Department.all.each do |department|
+          departments[department.name] = department.total_salary
+         end
+
+         res = ''
+         departments.sort.reverse.first(5).each do |department, total_salary|
+          res += "['#{department}', #{total_salary}],"
+         end
+         res.html_safe
+      %>
+    ]);
+
+    var chart = new google.visualization.ColumnChart(
+        document.getElementById('chart_department_salary')
+    );
+    chart.draw(data2, {
+      'title': 'Самый большой зарплатный фонд подразделения (топ 5)',
+      'vAxis': {
+        'title': 'Зарплатный фонд подразделения'
+      },
+      'series': {
+        '0': {
+          'visibleInLegend': false
+        }
+      }
+    });
+  }
+</script>
+<div id="chart_department_salary" style="width: 660px; height: 500px;"></div>
+
+<script type="text/javascript">
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data3 = google.visualization.arrayToDataTable([
+      ['Подразделение', 'Зарплатный фонд'],
+      <%=
+         res = ''
+         Employee.unscoped.order('name DESC').limit(5).each do |employee|
+          res += "['#{employee.name}', #{employee.salary}],"
+         end
+         res.html_safe
+      %>
+    ]);
+
+    var chart = new google.visualization.ColumnChart(
+        document.getElementById('chart_employee_salary')
+    );
+    chart.draw(data3, {
+      'title': 'Самая большая зарплата сотрудника (топ 5)',
+      'vAxis': {
+        'title': 'Зарплата сотрудника'
+      },
+      'series': {
+        '0': {
+          'visibleInLegend': false
+        }
+      }
+    });
+  }
+</script>
+<div id="chart_employee_salary" style="width: 660px; height: 500px;"></div>

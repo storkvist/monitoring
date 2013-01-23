@@ -1,0 +1,22 @@
+ru:
+  activerecord:
+    models:
+      user: Пользователь
+    attributes:
+      user:
+        email: Электронная почта
+        password: Пароль
+      department:
+        name: Название
+        description: Комментарии
+      employee:
+        department: Подразделение
+        name: Фамилия, имя, отчество
+        position: Должность
+        salary: Зарплата
+        phone: Телефон
+        duty: Должностные обязанности
+      assignment:
+        task: Задача
+        result: Количество выполненных работ
+        period: Отчётный период

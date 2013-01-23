@@ -1,0 +1,53 @@
+/* Исправляем пути к спрайтам от Twitter Bootstrap. */
+[class^="icon-"] {
+  background-image: image-url('glyphicons-halflings.png');
+}
+.icon-white {
+  background-image: image-url('glyphicons-halflings-white.png');
+}
+.icon-white, .nav-pills > .active > a > [class^="icon-"],
+.nav-pills > .active > a > [class*="icon-"],
+.nav-list > .active > a > [class^="icon-"],
+.nav-list > .active > a > [class*=" icon-"],
+.navbar-inverse .nav > .active > a > [class^="icon-"],
+.navbar-inverse .nav > .active > a > [class*=" icon-"],
+.dropdown-menu > li > a:hover > [class^="icon-"],
+.dropdown-menu > li > a:hover > [class*="icon-"],
+.dropdown-menu > .active > a > [class^="icon-"],
+.dropdown-menu > .active > a > [class*="icon-"],
+.dropdown-submenu:hover > a > [class^="icon-"],
+.dropdown-submenu:hover > a > [class*="icon-"] {
+  background-image: image-url('glyphicons-halflings-white.png');
+}
+
+/* Утилиты. */
+.full-width {
+  width: 100%;
+}
+
+/* Вёрстка. */
+body {
+  padding: 10px 10px 40px 10px;
+}
+.sidebar-nav {
+  padding: 9px 0;
+}
+.dl-horizontal {
+  dt {
+    width: 60px;
+  }
+  dd {
+    margin-left: 80px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .dl-horizontal {
+    dt {
+      width: auto;
+    }
+    dd {
+      margin-left: 0;
+    }
+  }
+}

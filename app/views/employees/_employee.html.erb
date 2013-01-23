@@ -1,0 +1,36 @@
+<tr>
+  <td>
+    <%= employee.name %>
+    <br>
+    <em><%= employee.phone %></em>
+  </td>
+  <td>
+    <%= employee.position %>
+    <br>
+    <em><%= number_to_currency employee.salary unless
+              employee.salary.nil? %></em>
+  </td>
+  <td><small><%= employee.department.name %></small></td>
+  <td>
+    <%= link_to employee, :class => 'btn', :title => 'Посмотреть' do %>
+      <i class="icon-zoom-in"></i>
+    <% end %>
+  </td>
+
+  <td>
+    <%= link_to edit_employee_path(employee), :class => 'btn',
+                :title => 'Редактировать' do %>
+      <i class="icon-edit"></i>
+    <% end %>
+  </td>
+
+  <td>
+    <%= link_to employee, :method => :delete,
+                :data => { :confirm => 'Вы уверены?' },
+                :class => 'btn btn-danger',
+                :title => 'Удалить' do %>
+      <i class="icon-remove icon-white"></i>
+    <% end %>
+  </td>
+
+</tr>

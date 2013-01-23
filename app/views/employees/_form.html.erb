@@ -1,0 +1,46 @@
+<%= form_for(@employee) do |f| %>
+  <% if @employee.errors.any? %>
+    <div class="alert alert-block alert-danger">
+      <p><strong>Ошибка при сохранении</strong></p>
+
+      <ul>
+      <% @employee.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :department %>
+  <%= f.collection_select :department_id, Department.all, :id, :name,
+                          { :prompt => 'Выберите подразделение',
+                            :selected => params[:department] },
+                          :class => 'span8' %>
+
+  <%= f.label :name %>
+  <span class="help-block">
+    <em>Хозяйке на заметку</em>
+    Пишите имя в формате «Фамилия имя отчество» (Иванов Иван Иванович).
+    Так будет легче ориентироваться в списках сотрудников.
+  </span>
+  <%= f.text_field :name, :class => 'span6' %>
+
+  <%= f.label :position %>
+  <%= f.text_field :position, :class => 'span6' %>
+
+  <%= f.label :salary, 'Зарплата (за месяц)' %>
+  <%= f.text_field :salary, :class => 'span2' %>
+  <span class="help-inline visible-desktop" style="display: inline !important;">
+    рублей
+  </span>
+
+  <%= f.label :phone %>
+  <%= f.text_field :phone %>
+
+  <%= f.label :duty %>
+  <%= f.text_area :duty, :class => 'span8', :rows => 10 %>
+
+  <div class="form-actions">
+    <%= f.submit 'Сохранить', :class => 'btn btn-primary' %>
+  </div>
+<% end %>

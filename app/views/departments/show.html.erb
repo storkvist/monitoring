@@ -1,0 +1,44 @@
+<p class="pull-right">
+  <span title="Создано">
+    <%= l @department.created_at, :format => :long %>
+  </span>
+  <br>
+  <strong title="Последнее изменение">
+    <%= l @department.updated_at, :format => :long %>
+  </strong>
+</p>
+
+<h2><%= @department.name %></h2>
+
+<p class="lead">
+  <%= link_to 'Редактировать подразделение',
+              edit_department_path(@department) %>
+</p>
+
+<blockquote><%= @department.description %></blockquote>
+
+<% unless @department.employees.empty? %>
+<form class="form-inline">
+  Зарплатный фонд подразделения
+  <select class="recalc-period span2"
+          data-value="<%= @department.total_salary %>">
+    <option value="1">за месяц</option>
+    <option value="12">за год</option>
+  </select>
+  &mdash;
+  <span class="recalc-result"><%= @department.total_salary %></span>&nbsp;руб.
+</form>
+<% end %>
+
+<% unless @department.employees.empty? %>
+  <table class="table table-striped">
+    <%= render @department.employees %>
+  </table>
+<% end %>
+
+<p class="lead">
+  <%= link_to 'Добавить сотрудника',
+              new_employee_url(:department => @department) %>
+</p>
+
+<%= link_to '← Назад ко всем подразделениям', departments_path %>

@@ -1,0 +1,54 @@
+<h2>Визуализация зарплат по университету</h2>
+
+<ul>
+  <li>
+    <strong>Чем «зеленее» цвет, тем больше</strong> подразделение
+    (или сотрудник) <strong>получает</strong> по сравнению со всеми остальными.
+  </li>
+  <li>
+    <strong>Чем «краснее» цвет, тем меньше</strong> подразделение
+    (или сотрудник) <strong>получает</strong> по сравнению со всеми остальными.
+  </li>
+  <li>
+    Если цвет приближается к серому, то подразделение (или сотрудник) получает
+    на среднем уровне по университету.
+  </li>
+  <li>
+    При левом клике по подразделению можно спуститься на срез по сотрудникам
+    этого подразделения.
+  </li>
+  <li>
+    При правом клике по сотрудникам подразделения можно подняться на срез
+    по подразделениям университета.
+  </li>
+  <li>
+    Если надпись в прямоугольнике полностью не видно — наведите на него мышкой,
+    надпись появится во&nbsp;всплывающем окошке.
+  </li>
+</ul>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("visualization", "1", {packages:["treemap"]});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Сотрудник', 'Подразделение', 'Зарплата'],
+      <%= @data.html_safe %>
+    ]);
+
+    var tree = new google.visualization.TreeMap(
+      document.getElementById('treemap')
+    );
+    tree.draw(data, {
+      minColor: '#f00',
+      midColor: '#ddd',
+      maxColor: '#0d0',
+      headerHeight: 15,
+      fontColor: 'black',
+      showScale: true
+    });
+  }
+</script>
+
+<div id="treemap" style="width: 560px; height: 500px;"></div>

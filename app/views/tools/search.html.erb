@@ -1,0 +1,10 @@
+<h2>Поиск сотрудников</h2>
+
+<form class="form-search">
+  <input name="query" type="text" value="<%= params[:query] %>"
+         class="search-query" style="width: 94%;" autofocus>
+</form>
+
+<table class="table table-striped">
+  <%= render @employees %>
+</table>

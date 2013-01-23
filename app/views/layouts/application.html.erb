@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Monitoring</title>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="brand" href="/">Мониторинг 0.1</a>
+      <% if user_signed_in? %>
+        <p class="navbar-text pull-right">
+          <span class="hidden-phone"><%= current_user.email %></span>
+          <%= link_to 'Выйти', destroy_user_session_url, :method => :delete,
+                      :class => 'text-error' %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+      <% if user_signed_in? %>
+        <div class="well sidebar-nav">
+          <%= render_navigation %>
+        </div>
+      <% end %>
+    </div>
+    <div class="span9">
+      <% if notice %>
+        <div class="alert alert-block alert-info">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong><%= notice %></strong>
+        </div>
+      <% end %>
+
+      <% if alert %>
+        <div class="alert alert-block alert-error">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong><%= alert %></strong>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </div>
+
+  <hr>
+
+  <footer>
+    <p>&copy; МГУП им. Ивана Фёдорова, 2013</p>
+  </footer>
+</div>
+
+</body>
+</html>
