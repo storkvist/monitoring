@@ -9,7 +9,7 @@ class Department < ActiveRecord::Base
 
   def total_salary
     self.employees.inject(0) do |sum, employee|
-      sum += employee.salary
+      sum += employee.salary unless employee.salary.nil?
       sum
     end
   end
