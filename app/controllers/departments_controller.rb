@@ -31,9 +31,11 @@ class DepartmentsController < ApplicationController
   def create
     @department = Department.new(params[:department])
 
-    @department.save ?
-      redirect_to @department, :notice => 'Подразделение создано' :
+    if @department.save
+      redirect_to @department, :notice => 'Подразделение создано'
+    else
       render :action => 'new'
+    end
   end
 
   # PUT /departments/1
@@ -41,9 +43,11 @@ class DepartmentsController < ApplicationController
   def update
     @department = Department.find(params[:id])
 
-    @department.update_attributes(params[:department]) ?
-      redirect_to @department, :notice => 'Изменения сохранены.' :
+    if @department.update_attributes(params[:department])
+      redirect_to @department, :notice => 'Изменения сохранены.'
+    else
       render :action => 'edit'
+    end
   end
 
   # DELETE /departments/1
