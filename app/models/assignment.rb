@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 class Assignment < ActiveRecord::Base
+  PERIOD_DAY      = 5
   PERIOD_WEEK     = 1
   PERIOD_MONTH    = 2
   PERIOD_QUARTER  = 3
@@ -17,6 +18,8 @@ class Assignment < ActiveRecord::Base
 
   def period_name
     case self.period
+      when PERIOD_DAY
+        'день'
       when PERIOD_WEEK
         'неделя'
       when PERIOD_MONTH

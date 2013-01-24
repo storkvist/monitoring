@@ -1,6 +1,7 @@
 <%= form_for Assignment.new, :remote => true do |f| %>
   <%= f.label :period %>
   <%= f.select :period, [
+      ['день',    Assignment::PERIOD_DAY],
       ['неделя',  Assignment::PERIOD_WEEK],
       ['месяц',   Assignment::PERIOD_MONTH],
       ['квартал', Assignment::PERIOD_QUARTER],
