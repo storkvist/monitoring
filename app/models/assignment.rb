@@ -6,13 +6,14 @@ class Assignment < ActiveRecord::Base
   PERIOD_QUARTER  = 3
   PERIOD_YEAR     = 4
 
-  attr_accessible :period, :task, :result, :employee_id
+  attr_accessible :period, :task, :instruction_id
 
-  belongs_to :employee
+  belongs_to :instruction
+  has_many :results
 
-  validates_presence_of :employee_id, :task, :result
+  validates_presence_of :instruction_id, :task
 
-  default_scope order('period ASC')
+  default_scope order('period ASC, task ASC')
 
   def period_name
     case self.period

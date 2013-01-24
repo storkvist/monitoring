@@ -1,11 +1,11 @@
 class Employee < ActiveRecord::Base
-  attr_accessible :duty, :name, :phone, :position, :salary, :department_id
+  attr_accessible :name, :phone, :position, :salary, :comments, :department_id
 
   belongs_to :department
 
-  has_many :assignments
+  has_many :instructions
 
-  validates_presence_of :department_id, :position, :name, :duty
+  validates_presence_of :department_id, :position, :name, :comments
 
   default_scope order('name ASC')
 

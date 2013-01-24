@@ -4,7 +4,7 @@ class CreateEmployees < ActiveRecord::Migration
       t.string :position
       t.string :name
       t.string :phone
-      t.text :duty
+      t.text :comments
 
       t.timestamps
     end

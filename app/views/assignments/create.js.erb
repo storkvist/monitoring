@@ -1,3 +1,4 @@
-$('#assignments').append('<%=j render @assignment %>');
+$('.assignments[data-instruction="<%= @assignment.instruction.id %>"]')
+  .prepend('<%=j render @assignment %>');
+
 $('#assignment_task').val('');
-$('#assignment_result').val('');

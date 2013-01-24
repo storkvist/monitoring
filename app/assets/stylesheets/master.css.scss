@@ -24,6 +24,11 @@
 .full-width {
   width: 100%;
 }
+.fake-link {
+  cursor: pointer;
+  color: #08c;
+  border-bottom: 1px dashed #08c;
+}
 
 /* Вёрстка. */
 body {

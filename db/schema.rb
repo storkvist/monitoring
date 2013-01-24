@@ -11,16 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122092251) do
+ActiveRecord::Schema.define(:version => 20130124083619) do
 
   create_table "assignments", :force => true do |t|
     t.text     "task"
     t.text     "result"
     t.integer  "period"
     t.integer  "employee_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "instruction_id"
   end
+
+  add_index "assignments", ["employee_id"], :name => "fki_assignments_employee"
 
   create_table "departments", :force => true do |t|
     t.string   "name"
@@ -39,6 +42,22 @@ ActiveRecord::Schema.define(:version => 20130122092251) do
     t.datetime "updated_at",    :null => false
     t.integer  "department_id"
     t.decimal  "salary"
+  end
+
+  add_index "employees", ["department_id"], :name => "fki_employees_department"
+
+  create_table "instructions", :force => true do |t|
+    t.text     "details"
+    t.integer  "employee_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "results", :force => true do |t|
+    t.text     "details"
+    t.integer  "assignment_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "users", :force => true do |t|

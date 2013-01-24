@@ -32,17 +32,19 @@
 </form>
 <% end %>
 
-<blockquote><%= @employee.duty %></blockquote>
+<p><em><%= @employee.comments %></em></p>
 
-<% unless @employee.assignments.empty? %>
-<h4>Выполненные задачи</h4>
+<hr>
+
+<% unless @employee.instructions.empty? %>
+  <h4>Должностные обязанности</h4>
 <% end %>
 
-<dl id="assignments" class="dl-horizontal">
-  <%= render @employee.assignments %>
-</dl>
+<div id="instructions">
+  <%= render @employee.instructions %>
+</div>
 
-<%= render 'assignments/form' %>
+<%= render 'instructions/form' %>
 
 <%= link_to '← К подразделению сотрудника', @employee.department %>
 <br>

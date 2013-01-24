@@ -1,3 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  $('.toggle-add-assignment').on 'click', ->
+    $(this).hide()
+    $(this).next().slideDown()
+
+  $('.toggle-close-add-assignment').on 'click', ->
+    assignment = $($(this).parents()[2])
+    assignment.slideUp()
+    assignment.prev().show()

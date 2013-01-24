@@ -3,7 +3,9 @@ Monitoring::Application.routes.draw do
 
   resources :departments
   resources :employees
+  resources :instructions
   resources :assignments
+  resources :results
 
   match '/search' => 'tools#search'
 

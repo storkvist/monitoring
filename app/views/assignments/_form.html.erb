@@ -1,6 +1,4 @@
 <%= form_for Assignment.new, :remote => true do |f| %>
-  <h4>Добавить новый отчёт о выполнении задач</h4>
-
   <%= f.label :period %>
   <%= f.select :period, [
       ['неделя',  Assignment::PERIOD_WEEK],
@@ -9,15 +7,14 @@
       ['год',     Assignment::PERIOD_YEAR]
   ], { :selected => Assignment::PERIOD_MONTH }, { :class => 'span2'} %>
 
-  <%= f.hidden_field :employee_id, :value => @employee.id %>
+  <%= f.hidden_field :instruction_id, :value => instruction.id %>
 
   <%= f.label :task %>
   <%= f.text_area :task, :class => 'span8', :rows => 3 %>
 
-  <%= f.label :result %>
-  <%= f.text_area :result, :class => 'span8', :rows => 3 %>
-
   <div class="form-actions">
-    <%= f.submit 'Добавить отчёт по задаче', :class => 'btn btn-primary' %>
+    <%= f.submit 'Добавить отчёт по задаче',
+                 :class => 'btn btn-primary btn-small' %>
+    или <span class="fake-link toggle-close-add-assignment">закрыть</span>
   </div>
 <% end %>

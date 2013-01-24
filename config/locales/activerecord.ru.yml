@@ -16,7 +16,9 @@ ru:
         position: Должность
         salary: Зарплата
         phone: Телефон
-        duty: Должностные обязанности
+        comments: Комментарии
+      instruction:
+        details: Должностная обязанность
       assignment:
         task: Задача
         result: Количество выполненных работ
