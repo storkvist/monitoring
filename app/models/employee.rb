@@ -5,7 +5,7 @@ class Employee < ActiveRecord::Base
 
   has_many :instructions
 
-  validates_presence_of :department_id, :position, :name, :comments
+  validates_presence_of :department_id, :position, :name
 
   default_scope order('name ASC')
 
