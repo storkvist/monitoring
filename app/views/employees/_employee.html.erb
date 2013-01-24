@@ -1,6 +1,8 @@
 <tr>
   <td>
-    <%= employee.name %>
+    <%= link_to employee do %>
+      <%= employee.name %>
+    <% end %>
     <br>
     <em><%= employee.phone %></em>
   </td>
