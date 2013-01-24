@@ -5,6 +5,4 @@ class Instruction < ActiveRecord::Base
   has_many :assignments
 
   validates_presence_of :details
-
-  default_scope order('details ASC')
 end

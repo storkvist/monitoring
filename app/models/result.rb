@@ -4,6 +4,4 @@ class Result < ActiveRecord::Base
   belongs_to :assignment
 
   validates_presence_of :details
-
-  default_scope order('details ASC')
 end
