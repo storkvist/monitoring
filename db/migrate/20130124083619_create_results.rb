@@ -1,4 +1,4 @@
-class CreateResult < ActiveRecord::Migration
+class CreateResults < ActiveRecord::Migration
   def change
     create_table :result do |t|
       t.text :details
