@@ -1,4 +1,6 @@
-$('.assignments[data-instruction="<%= @assignment.instruction.id %>"]')
-  .prepend('<%=j render @assignment %>');
+$('.assignments[data-instruction="<%= @assignment.instruction.id %>"] dd:last-child')
+  .before('<%=j render @assignment %>');
 
-$('#assignment_task').val('');
+$('.assignment_task').each(function() {
+  $(this).val('');
+});

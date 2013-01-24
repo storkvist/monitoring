@@ -1,13 +1,15 @@
-<blockquote id="instruction<%= instruction.id %>">
-  <%= instruction.details %>
-</blockquote>
+<div class="instruction">
+  <blockquote id="instruction<%= instruction.id %>">
+    <%= instruction.details %>
+  </blockquote>
 
-<dl class="assignments" data-instruction="<%= instruction.id %>">
-  <%= render instruction.assignments   %>
-  <dd>
-    <span class="fake-link toggle-add-assignment">+ Добавить задачу</span>
-    <div class="assignment" style="display: none;">
-      <%= render 'assignments/form', :instruction => instruction  %>
-    </div>
-  </dd>
-</dl>
+  <dl class="assignments" data-instruction="<%= instruction.id %>">
+    <%= render instruction.assignments   %>
+    <dd>
+      <span class="fake-link toggle-add-assignment">+ Добавить задачу</span>
+      <div class="assignment" style="display: none;">
+        <%= render 'assignments/form', :instruction => instruction  %>
+      </div>
+    </dd>
+  </dl>
+</div>

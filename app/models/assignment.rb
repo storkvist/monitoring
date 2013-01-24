@@ -7,6 +7,4 @@ class Assignment < ActiveRecord::Base
   has_many :results
 
   validates_presence_of :instruction_id, :task
-
-  default_scope order('task ASC')
 end

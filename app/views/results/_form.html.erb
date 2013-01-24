@@ -1,0 +1,12 @@
+<%= form_for Result.new, :remote => true do |f| %>
+  <%= f.hidden_field :assignment_id, :value => assignment.id %>
+
+  <%= f.label :details %>
+  <%= f.text_area :details, :class => 'span8 result_details', :rows => 3 %>
+
+  <div class="form-actions">
+    <%= f.submit 'Добавить выполненную работу',
+                 :class => 'btn btn-primary btn-small' %>
+    или <span class="fake-link toggle-close-add-result">закрыть</span>
+  </div>
+<% end %>

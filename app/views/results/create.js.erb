@@ -1,0 +1,6 @@
+$('.assignment[data-id="<%= @result.assignment.id %>"]')
+    .after('<%=j render @result %>');
+
+$('.result_details').each(function() {
+  $(this).val('');
+});

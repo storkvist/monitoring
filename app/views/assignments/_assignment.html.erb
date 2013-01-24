@@ -1,4 +1,10 @@
-<dt>
-  <p><strong><%= assignment.task %></strong></p>
-  <p><%= assignment.result %></p>
+<dt class="assignment" data-id="<%= assignment.id %>">
+  <strong><%= assignment.task %></strong>
+  <br>
+  <span class="fake-link toggle-add-result">+ Добавить выполненную работу</span>
+  <div class="assignment" style="display: none;">
+    <%= render 'results/form', :assignment => assignment  %>
+  </div>
 </dt>
+
+<%= render assignment.results %>

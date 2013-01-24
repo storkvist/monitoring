@@ -1,0 +1,17 @@
+.assignment {
+  margin-top: 30px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  .toggle-add-result {
+    visibility: hidden;
+  }
+
+  &:hover {
+    .toggle-add-result {
+      visibility: visible;
+    }
+  }
+}

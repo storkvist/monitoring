@@ -1,0 +1,11 @@
+.instruction {
+  .toggle-add-assignment {
+    visibility: hidden;
+  }
+
+  &:hover {
+    .toggle-add-assignment {
+      visibility: visible;
+    }
+  }
+}

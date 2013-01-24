@@ -1,5 +1,9 @@
 $('#instructions').append('<%=j render @instruction %>');
-$('#instruction_details').val('');
+
+$('.instruction_details').each(function() {
+  $(this).val('');
+});
+
 $('html, body').animate({
   'scrollTop': $('#instruction<%= @instruction.id %>').offset().top
 }, 200);
