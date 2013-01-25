@@ -3,13 +3,13 @@
     <%= instruction.details %>
   </blockquote>
 
+  <%= render instruction.assignments   %>
   <dl class="assignments" data-instruction="<%= instruction.id %>">
-    <%= render instruction.assignments   %>
-    <dd>
+    <dt>
       <span class="fake-link toggle-add-assignment">+ Добавить задачу</span>
       <div class="assignment" style="display: none;">
         <%= render 'assignments/form', :instruction => instruction  %>
       </div>
-    </dd>
+    </dt>
   </dl>
 </div>

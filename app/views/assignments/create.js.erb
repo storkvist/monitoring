@@ -1,5 +1,8 @@
-$('.assignments[data-instruction="<%= @assignment.instruction.id %>"] dd:last-child')
+$('.assignments[data-instruction="<%= @assignment.instruction.id %>"] dt:last-child')
   .before('<%=j render @assignment %>');
+
+$('.assignments[data-instruction="<%= @assignment.instruction.id %>"] .toggle-close-add-assignment')
+  .click();
 
 $('.assignment_task').each(function() {
   $(this).val('');
