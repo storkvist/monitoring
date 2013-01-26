@@ -101,7 +101,7 @@ INSERT INTO text_stat (
 INSERT INTO text_stat VALUES (NULL, (SELECT count(*) FROM employee_duties));
 ```
 
-### Пример вычислени схожих должностных обязанностей
+### Пример вычисления схожих должностных обязанностей
 
 ```postgresql
 SELECT 
