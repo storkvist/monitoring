@@ -33,19 +33,19 @@ smlar.stattable = text_stat
 ```
 
 Либо устанавливать/изменять их через SQL-запросы:
-```sql
+```postgresql
 SELECT set_smlar_limit(0.8);
 SET smlar.type = "tfidf";
 SET smlar.stattable = "text_stat";
 ```
 
 Для непосредственного использования расширения, в рабочей базе данных выполняем:
-```sql
+```postgresql
 CREATE EXTENSION smlar;
 ```
 
 Кроме того, для удобной работы с данными нам понадобится дополнительная функция:
-```sql
+```postgresql
 CREATE OR REPLACE FUNCTION array_to_col(anyarray)
 RETURNS SETOF anyelement AS
 $$
@@ -59,7 +59,7 @@ $$ LANGUAGE SQL RETURNS NULL ON NULL INPUT IMMUTABLE;
 Вспомогательная таблица будет хранить слова и частоты их употребления.
 Она используется smlar для вычисления TF-IDF меры схожести двух текстов.
 
-```sql
+```postgresql
 CREATE TABLE text_stat (
   value   text UNIQUE,
   ndoc    int4 NOT NULL CHECK (ndoc > 0)
@@ -75,7 +75,7 @@ CREATE TABLE text_stat (
 анализируются вектора, составленные из объединения должностных обязанностей 
 и результатов работы сотрудника. Для удобства эти данные выведены в виде
 отдельного представления:
-```SQL
+```postgresql
 CREATE OR REPLACE VIEW employee_duties AS 
  SELECT employees.id AS employee_id, 
         assignments.id AS assignment_id, 
