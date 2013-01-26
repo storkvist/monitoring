@@ -2,6 +2,7 @@
 
 require 'rvm/capistrano'
 require 'bundler/capistrano'
+require 'whenever/capistrano'
 load 'deploy/assets'
 
 set :rvm_type, :system
