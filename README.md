@@ -54,21 +54,6 @@ $$
 $$ LANGUAGE SQL RETURNS NULL ON NULL INPUT IMMUTABLE;
 ```
 
-### Таблица для хранения частот употребления слов
-
-Вспомогательная таблица будет хранить слова и частоты их употребления.
-Она используется smlar для вычисления TF-IDF меры схожести двух текстов.
-
-```postgresql
-CREATE TABLE text_stat (
-  value   text UNIQUE,
-  ndoc    int4 NOT NULL CHECK (ndoc > 0)
-);
-```
-
-В ней хранятся пары (СЛОВО, КОЛИЧЕСТВО УПОТРЕБЛЕНИЙ). Кроме того, в ней должна 
-находиться пара (NULL, КОЛИЧЕСТВО ПРОАНАЛИЗИРОВАННЫХ ДОКУМЕНТОВ).
-
 ### Исходные данные для анализа
 
 При поиске сотрудников со схожими должностными обязанностями
@@ -86,4 +71,48 @@ CREATE OR REPLACE VIEW employee_duties AS
   JOIN instructions ON instructions.id = assignments.instruction_id
   JOIN employees ON employees.id = instructions.employee_id
   GROUP BY employees.id, assignments.id;
+```
+
+### Таблица для хранения частот употребления слов
+
+Вспомогательная таблица будет хранить слова и частоты их употребления.
+Она используется smlar для вычисления TF-IDF меры схожести двух текстов.
+
+```postgresql
+CREATE TABLE text_stat (
+  value   text UNIQUE,
+  ndoc    int4 NOT NULL CHECK (ndoc > 0)
+);
+```
+
+В ней хранятся пары (СЛОВО, КОЛИЧЕСТВО УПОТРЕБЛЕНИЙ). Кроме того, в ней должна 
+находиться пара (NULL, КОЛИЧЕСТВО ПРОАНАЛИЗИРОВАННЫХ ДОКУМЕНТОВ).
+
+Заполнение таблицы:
+```postgresql
+INSERT INTO text_stat (
+    SELECT
+    	q.w,
+		count(*)
+	FROM
+		(SELECT array_to_col(tsvector2textarray(duties)) AS w FROM employee_duties WHERE duties IS NOT NULL)  AS q
+	GROUP BY w
+);
+INSERT INTO text_stat VALUES (NULL, (SELECT count(*) FROM employee_duties));
+```
+
+### Пример вычислени схожих должностных обязанностей
+
+```postgresql
+SELECT 
+    d1.employee_id, 
+	d1.assignment_id, 
+	d2.employee_id, 
+	d2.assignment_id, 
+	tsvector2textarray(d1.duties), 
+	tsvector2textarray(d2.duties),
+	smlar(tsvector2textarray(d1.duties), tsvector2textarray(d2.duties)) AS similarity 
+FROM employee_duties AS d1, employee_duties AS d2 
+WHERE d1.assignment_id != d2.assignment_id 
+ORDER BY similarity DESC;
 ```
