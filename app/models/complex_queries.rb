@@ -23,7 +23,7 @@ class ComplexQueries < ActiveRecord::Base
         AND e1.id = d1.employee_id
         AND e2.id = d2.employee_id
         AND #{similar_function} >= 0.5
-      ORDER BY similarity DESC;
+      ORDER BY similarity DESC #{ 'LIMIT 10' unless Rails.env.production? };
     ), 0.5]))
   end
 end

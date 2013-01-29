@@ -1,17 +1,24 @@
 <h2>Поиск схожих задач</h2>
 
 <table class="table table-striped">
-  <% @similar_tasks.each do |pair| %>
+  <thead>
     <tr>
-      <td>
+      <th>Сотрудник 1</th>
+      <th>Сотрудник 2</th>
+      <th>TF-IDF</th>
+    </tr>
+  </thead>
+  <% @similar_tasks.each do |pair| %>
+    <tr data-employee1="<%= pair['e1'] %>" data-employee2="<%= pair['e2'] %>">
+      <td style="width: 45%;">
         <%= render 'task', :employee   => Employee.find(pair['e1']),
                            :assignment => Assignment.find(pair['a1']) %>
       </td>
-      <td>
+      <td style="width: 45%;">
         <%= render 'task', :employee   => Employee.find(pair['e2']),
                            :assignment => Assignment.find(pair['a2']) %>
       </td>
-      <td>
+      <td style="width: 10%;">
         <%= number_to_percentage pair['similarity'].to_f * 100,
                                  :precision => 0 %>
       </td>
