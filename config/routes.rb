@@ -7,10 +7,11 @@ Monitoring::Application.routes.draw do
   resources :assignments
   resources :results
 
-  match '/search' => 'tools#search'
+  match '/search'  => 'tools#search'
+  match '/similar' => 'tools#similar'
 
   match '/reports/treemap' => 'reports#treemap'
-  match '/reports/top' => 'reports#top'
+  match '/reports/top'     => 'reports#top'
 
   root :to => 'departments#index'
 

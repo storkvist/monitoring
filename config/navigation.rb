@@ -72,6 +72,10 @@ SimpleNavigation::Configuration.run do |navigation|
                  '<i class="icon-search"></i> Поиск'.html_safe,
                  search_url
 
+    primary.item :similar_tasks,
+                 '<i class="icon-tasks"></i> Похожие задачи'.html_safe,
+                 similar_url
+
 
     primary.item :reports_header, 'Отчёты', nil, :class => 'nav-header'
 

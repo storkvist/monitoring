@@ -1,0 +1,20 @@
+<h2>Поиск схожих задач</h2>
+
+<table class="table table-striped">
+  <% @similar_tasks.each do |pair| %>
+    <tr>
+      <td>
+        <%= render 'task', :employee   => Employee.find(pair['e1']),
+                           :assignment => Assignment.find(pair['a1']) %>
+      </td>
+      <td>
+        <%= render 'task', :employee   => Employee.find(pair['e2']),
+                           :assignment => Assignment.find(pair['a2']) %>
+      </td>
+      <td>
+        <%= number_to_percentage pair['similarity'].to_f * 100,
+                                 :precision => 0 %>
+      </td>
+    </tr>
+  <% end %>
+</table>
