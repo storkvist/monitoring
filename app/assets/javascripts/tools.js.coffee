@@ -1,3 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  $('#only_different_employees').click ->
+    if this.checked
+      $('.table-similar tbody tr').each ->
+        $(this).hide() if ($(this).data('e1') == $(this).data('e2'))
+    else
+      $('.table-similar tbody tr').each ->
+        $(this).show()
