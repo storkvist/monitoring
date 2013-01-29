@@ -26,4 +26,23 @@ class ComplexQueries < ActiveRecord::Base
       ORDER BY similarity DESC #{ 'LIMIT 10' unless Rails.env.production? };
     ), 0.5]))
   end
+
+  def self.count_text_stats
+    self.connection.execute(sanitize_sql([%q(
+      DELETE FROM text_stat;
+      INSERT INTO text_stat (
+        SELECT
+          q.w,
+          count(*)
+        FROM (
+          SELECT array_to_col(tsvector2textarray(duties)) AS w
+          FROM employee_duties
+          WHERE duties IS NOT NULL)  AS q
+          GROUP BY w
+      );
+      INSERT INTO text_stat VALUES (
+        NULL, (SELECT count(*) FROM employee_duties)
+      );
+    )]))
+  end
 end

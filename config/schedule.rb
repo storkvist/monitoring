@@ -18,3 +18,7 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+every 30.minutes do
+  runner 'ComplexQueries.count_text_stats'
+end
