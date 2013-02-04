@@ -1,0 +1,11 @@
+$('dd.result[data-id="<%= @result.id %>"]').remove();
+
+$('.assignment dd[data-id="<%= @result.assignment.id %>"] dl dd:last-child')
+    .before('<%=j render @result %>');
+
+$('.assignment dd[data-id="<%= @result.assignment.id %>"] dl .toggle-close-add-result')
+    .click();
+
+$('.result_details').each(function() {
+  $(this).val('');
+});

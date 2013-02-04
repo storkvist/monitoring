@@ -28,4 +28,13 @@ class AssignmentsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @assignment = Assignment.find params[:id]
+    @assignment.destroy
+
+    respond_to do |format|
+      format.js
+    end
+  end
 end

@@ -1,16 +1,19 @@
-<dl class="assignment">
+<dl class="assignment" data-id="<%= assignment.id %>">
   <dt>
     <strong><%= assignment.task %></strong>
+    <%= link_to 'Удалить', assignment_path(assignment), :method => :delete,
+                :remote => true, :data => { :confirm => 'Вы уверены?' } %>
   </dt>
   <dd data-id="<%= assignment.id %>">
     <dl>
       <%= render assignment.results %>
-      <dd>
-        <span class="fake-link toggle-add-result">
-          + Добавить выполненную работу
-        </span>
-        <div class="assignment" style="display: none;">
-          <%= render 'results/form', :assignment => assignment  %>
+      <dd class="toggle-add-result">
+        <span class="fake-link">+ Добавить выполненную работу</span>
+      </dd>
+      <dd style="display: none;">
+        <div class="assignment">
+          <%= render 'results/form', :assignment => assignment,
+                     :result => Result.new  %>
         </div>
       </dd>
     </dl>

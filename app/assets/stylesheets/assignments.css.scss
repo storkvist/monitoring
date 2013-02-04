@@ -9,8 +9,16 @@
     visibility: hidden;
   }
 
+  a {
+    visibility: hidden;
+  }
+
   &:hover {
     .toggle-add-result {
+      visibility: visible;
+    }
+
+    a {
       visibility: visible;
     }
   }

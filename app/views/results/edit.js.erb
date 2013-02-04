@@ -1,0 +1,6 @@
+$('dd.result[data-id="<%= @result.id %>"]').
+  after('<dd><br><%=j render 'results/form',
+                                            :assignment => @result.assignment,
+                                            :result => @result %></dd>');
+
+$('dd.result[data-id="<%= @result.id %>"]').hide();

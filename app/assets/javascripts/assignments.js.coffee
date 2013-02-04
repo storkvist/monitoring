@@ -4,6 +4,7 @@ $ ->
     $(this).next().slideDown()
 
   $('.toggle-close-add-result').live 'click', ->
-    assignment = $($(this).parents()[2])
+    assignment = $($(this).parents()[3])
+    debugger
     assignment.slideUp()
     assignment.prev().show()
